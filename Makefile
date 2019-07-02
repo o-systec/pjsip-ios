@@ -57,7 +57,7 @@ libs:
 PHONY := arm64
 arm64:
 	echo '#define PJ_CONFIG_IPHONE 1\n#include <pj/config_site_sample.h>' > $(PJPROJECT_DIR)/pjlib/include/pj/config_site.h
-	cd $(PJPROJECT_DIR) && ARCH='-arch arm64' ./configure-iphone
+	cd $(PJPROJECT_DIR) && CFLAGS="-O2 -Wno-unused-label -fembed-bitcode" ARCH='-arch arm64' ./configure-iphone
 	$(MAKE) -C $(PJPROJECT_DIR) dep
 	$(MAKE) -C $(PJPROJECT_DIR) clean
 	$(MAKE) -C $(PJPROJECT_DIR)
@@ -65,7 +65,7 @@ arm64:
 PHONY := armv7
 armv7:
 	echo '#define PJ_CONFIG_IPHONE 1\n#include <pj/config_site_sample.h>' > $(PJPROJECT_DIR)/pjlib/include/pj/config_site.h
-	cd $(PJPROJECT_DIR) && ARCH='-arch armv7' ./configure-iphone
+	cd $(PJPROJECT_DIR) && CFLAGS="-O2 -Wno-unused-label -fembed-bitcode" ARCH='-arch armv7' ./configure-iphone
 	$(MAKE) -C $(PJPROJECT_DIR) dep
 	$(MAKE) -C $(PJPROJECT_DIR) clean
 	$(MAKE) -C $(PJPROJECT_DIR)
@@ -73,7 +73,7 @@ armv7:
 PHONY := armv7s
 armv7s:
 	echo '#define PJ_CONFIG_IPHONE 1\n#include <pj/config_site_sample.h>' > $(PJPROJECT_DIR)/pjlib/include/pj/config_site.h
-	cd $(PJPROJECT_DIR) && ARCH='-arch armv7s' ./configure-iphone
+	cd $(PJPROJECT_DIR) && CFLAGS="-O2 -Wno-unused-label -fembed-bitcode" ARCH='-arch armv7s' ./configure-iphone
 	$(MAKE) -C $(PJPROJECT_DIR) dep
 	$(MAKE) -C $(PJPROJECT_DIR) clean
 	$(MAKE) -C $(PJPROJECT_DIR)
@@ -81,7 +81,7 @@ armv7s:
 PHONY := x64
 x64:
 	echo '#define PJ_CONFIG_IPHONE 1\n#include <pj/config_site_sample.h>' > $(PJPROJECT_DIR)/pjlib/include/pj/config_site.h
-	cd $(PJPROJECT_DIR) && DEVPATH="/Applications/XCode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer" ARCH="-arch x86_64" CFLAGS="-O2 -m64 -mios-simulator-version-min=7.0" LDFLAGS="-O2 -m64 -mios-simulator-version-min=7.0" ./configure-iphone
+	cd $(PJPROJECT_DIR) && DEVPATH="/Applications/XCode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer" ARCH="-arch x86_64" CFLAGS="-O2 -m64 -mios-simulator-version-min=7.0 -fembed-bitcode" LDFLAGS="-O2 -m64 -mios-simulator-version-min=7.0" ./configure-iphone
 	$(MAKE) -C $(PJPROJECT_DIR) dep
 	$(MAKE) -C $(PJPROJECT_DIR) clean
 	$(MAKE) -C $(PJPROJECT_DIR)
@@ -90,7 +90,7 @@ x64:
 PHONY := x86
 x86:
 	echo '#define PJ_CONFIG_IPHONE 1\n#include <pj/config_site_sample.h>' > $(PJPROJECT_DIR)/pjlib/include/pj/config_site.h
-	cd $(PJPROJECT_DIR) && DEVPATH="/Applications/XCode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer" ARCH="-arch i386" CFLAGS="-O2 -m64 -mios-simulator-version-min=7.0" LDFLAGS="-O2 -m64 -mios-simulator-version-min=7.0" ./configure-iphone
+	cd $(PJPROJECT_DIR) && DEVPATH="/Applications/XCode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer" ARCH="-arch i386" CFLAGS="-O2 -m64 -mios-simulator-version-min=7.0 -fembed-bitcode" LDFLAGS="-O2 -m64 -mios-simulator-version-min=7.0" ./configure-iphone
 	$(MAKE) -C $(PJPROJECT_DIR) dep
 	$(MAKE) -C $(PJPROJECT_DIR) clean
 	$(MAKE) -C $(PJPROJECT_DIR)
@@ -102,6 +102,7 @@ download:
 
 PHONY += clean
 clean:
+	rm -rf $(TARGET_DIR)
 
 .PHONY: $(PHONY)
 

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-OUTPUT_DIR=output
-BUILD_DIR=$OUTPUT_DIR/build
-TARGET_DIR=$OUTPUT_DIR/target
-PJPROJECT_DIR=$BUILD_DIR/pjproject-2.9
+OUTPUT_DIR=${OUTPUT_DIR:=output}
+BUILD_DIR=${BUILD_DIR:=${OUTPUT_DIR}/build}
+TARGET_DIR=${TARGET_DIR:=${OUTPUT_DIR}/target}
+PJPROJECT_DIR=${PJPROJECT_DIR:=${BUILD_DIR}/pjproject-2.9}
 
 if [ ! -d $TARGET_DIR/lib ];then
     mkdir -p "$TARGET_DIR/lib"
