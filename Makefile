@@ -6,7 +6,7 @@ ALWAYS_PULL         := n
 
 OUTPUT_DIR          := $(PWD)/output
 BUILD_DIR           := $(OUTPUT_DIR)/build
-TARGET_DIR          := $(OUTPUT_DIR)/target
+TARGET_DIR          := $(OUTPUT_DIR)/target/pjsip
 
 DOWNLOAD_DIR        := $(HOME)/Downloads
 

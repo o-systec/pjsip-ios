@@ -2,7 +2,7 @@
 
 OUTPUT_DIR=${OUTPUT_DIR:=output}
 BUILD_DIR=${BUILD_DIR:=${OUTPUT_DIR}/build}
-TARGET_DIR=${TARGET_DIR:=${OUTPUT_DIR}/target}
+TARGET_DIR=${TARGET_DIR:=${OUTPUT_DIR}/target/pjsip}
 PJPROJECT_DIR=${PJPROJECT_DIR:=${BUILD_DIR}/pjproject-2.9}
 
 if [ ! -d $TARGET_DIR/lib ];then
